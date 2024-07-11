@@ -13,12 +13,13 @@ import java.util.List;
 
 public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardSearch {
 
-    public  BoardSearchImpl(){
+    public BoardSearchImpl(){
         super(Board.class);
     }
 
     @Override
-    public Page<Board> search(Pageable pageable) {
+    public Page<Board> search1(Pageable pageable) {
+
         QBoard board = QBoard.board;
 
         JPQLQuery<Board> query = from(board);
@@ -44,6 +45,8 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         return null;
 
     }
+
+    @Override
     public Page<Board> searchAll(String[] types, String keyword, Pageable pageable) {
 
         QBoard board = QBoard.board;
@@ -69,6 +72,8 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
             }//end for
             query.where(booleanBuilder);
         }//end if
+
+        //bno > 0
         query.where(board.bno.gt(0L));
 
         //paging
@@ -80,4 +85,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
         return new PageImpl<>(list, pageable, count);
 
-}}
+    }
+
+
+}

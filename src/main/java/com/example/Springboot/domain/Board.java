@@ -1,8 +1,13 @@
 package com.example.Springboot.domain;
 
 
-import jakarta.persistence.*;
+
 import lombok.*;
+
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Getter
@@ -12,7 +17,7 @@ import lombok.*;
 @ToString
 public class Board extends BaseEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private  Long bno;
 
     @Column(length = 500,nullable = false)
