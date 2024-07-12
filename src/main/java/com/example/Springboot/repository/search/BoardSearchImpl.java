@@ -1,7 +1,7 @@
 package com.example.Springboot.repository.search;
 
 import com.example.Springboot.domain.Board;
-import com.example.Springboot.domain.QBoard;
+
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;
@@ -19,6 +19,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
     @Override
     public Page<Board> search1(Pageable pageable) {
+
 
         QBoard board = QBoard.board;
 
